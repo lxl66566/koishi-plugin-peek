@@ -17,5 +17,9 @@
   ],
   "peerDependencies": {
     "koishi": "^4.13.6"
+  },
+  "dependencies": {
+    "screenshot-desktop": "^1.15.0",
+    "sharp": "^0.32.4"
   }
 }
