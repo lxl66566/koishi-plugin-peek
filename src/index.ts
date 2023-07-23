@@ -3,12 +3,17 @@ import screenshot from "screenshot-desktop";
 import sharp from "sharp";
 
 export const name = "peek";
+export const usage = 'type "peek" to get a screenshot';
 export interface Config {
   blur: number;
 }
 export const Config: Schema<Config> = Schema.object({
   blur: Schema.number()
+    .min(0)
+    .max(12)
+    .step(0.3)
     .default(0)
+    .role("slider")
     .description("Gaussian Blur's radius, 0 means no blur"),
 });
 

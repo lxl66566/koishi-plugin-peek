@@ -1,9 +1,17 @@
 {
   "name": "koishi-plugin-peek",
   "description": "Your computer screen is being peeked at.",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
+  "contributors": [
+    "lxl66566 <lxl66566@gmail.com>"
+  ],
+  "homepage": "https://github.com/lxl66566/koishi-plugin-peek",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lxl66566/koishi-plugin-peek.git"
+  },
   "files": [
     "lib",
     "dist"
@@ -13,8 +21,16 @@
   "keywords": [
     "chatbot",
     "koishi",
-    "plugin"
+    "plugin",
+    "peek"
   ],
+  "koishi": {
+    "description": {
+      "en": "Share your computer screen to others.",
+      "zh": "分享你的电脑屏幕"
+    },
+    "locales": ["en", "zh"]
+  },
   "peerDependencies": {
     "koishi": "^4.13.6"
   },
