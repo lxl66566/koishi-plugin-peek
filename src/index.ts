@@ -21,9 +21,7 @@ async function applyGaussianBlur(
   imageBuffer: Buffer,
   radius: number
 ): Promise<Buffer> {
-  if (radius === 0) {
-    return imageBuffer;
-  }
+  if (radius === 0) return imageBuffer;
   try {
     const resultBuffer = await sharp(imageBuffer).blur(radius).toBuffer();
     return resultBuffer;
@@ -34,8 +32,10 @@ async function applyGaussianBlur(
 }
 
 export function apply(ctx: Context, config: Config) {
-  ctx.on("message", (session) => {
-    if (session.content === "peek") {
+  ctx
+    .command("peek", "窥屏")
+    .usage("type 'peek' to get a screenshot")
+    .action(async ({ session }) => {
       screenshot()
         .then((imageString) => {
           return applyGaussianBlur(
@@ -44,11 +44,10 @@ export function apply(ctx: Context, config: Config) {
           );
         })
         .then((imageBuffer) => {
-          session.send(h.image(imageBuffer, "image/png"));
+          return session.send(h.image(imageBuffer, "image/png"));
         })
         .catch((e) => {
-          session.send(e);
+          return e;
         });
-    }
-  });
+    });
 }
